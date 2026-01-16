@@ -8,19 +8,36 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <div class="background-decor">
+        <div class="cloud-item" style="top: 10%; animation-delay: -5s; transform: scale(0.6);"></div>
+        <div class="cloud-item" style="top: 40%; animation-delay: -15s; transform: scale(0.8);"></div>
+        <div class="cloud-item" style="top: 70%; animation-delay: -2s; transform: scale(0.5);"></div>
+        <div class="cloud-item" style="top: 85%; animation-delay: -10s; transform: scale(0.9);"></div>
+
+        <div class="heart-bg" style="top: 20%; left: 10%;">❤️</div>
+        <div class="heart-bg" style="top: 15%; right: 15%;">💗</div>
+        <div class="heart-bg" style="bottom: 20%; left: 15%;">💖</div>
+        <div class="heart-bg" style="bottom: 10%; right: 10%;">💓</div>
+    </div>
+
     <div id="celebration-zone"></div>
 
     <div class="container">
-        <div class="clouds"></div>
-        <div class="card">
+        <div class="clouds-texture"></div> <div class="card">
             <div id="card-content">
-                <img src="cartaCerrada.png" alt="Sobre Cerrado" class="birthday-photo" id="main-photo">
+                <div class="envelope">
+                    <img src="sobre_cerrado.png" alt="Sobre" class="birthday-photo" id="main-photo">
+                    <div class="heart_love">❤️</div>
+                </div>
+
                 <div id="countdown-container">
-                    <p id="countdown">Preparando tu sorpresa...</p>
+                    <p id="countdown">Cargando sorpresa...</p>
                 </div>
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
