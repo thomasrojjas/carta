@@ -1,5 +1,5 @@
 function updateCountdown() {
-    // FECHA OBJETIVO
+    // FECHA OBJETIVO: 18 de Enero a las 13:00
     const targetDate = new Date("Jan 18, 2026 13:30:00").getTime();
     const now = new Date().getTime();
     const diff = targetDate - now;
@@ -13,13 +13,13 @@ function updateCountdown() {
             celebrationZone.dataset.started = 'true';
             document.title = "¡Feliz Cumpleaños! 🎂";
             
-            // Reemplazamos el contenido con la CARTA ABIERTA y tu mensaje
+            // CONTENIDO DE LA CARTA ABIERTA
             card.innerHTML = `
                 <div style="text-align: center;">
-                    <img src="cartaAbierta.png" alt="Carta Abierta" class="birthday-photo" style="width:160px;">
-                    <h1 style="color: #d63384; margin-bottom: 15px;">¡Feliz Cumpleaños Mi Princesaaaaa!</h1>
+                    <img src="cartaAbierta.png" alt="Carta Abierta" class="birthday-photo" style="width:180px;">
                 </div>
                 <div class="message-text">
+                    <h1>¡Feliz Cumpleaños Mi Princesaaaaa!</h1>
                     <p>Mi bebe bella, feliz cumpleaños cada dia más ANCIANAAAA!!!! ❤️</p>
                     
                     <p>Quiero que sepas que te amo mucho cosita bella, estoy muy orgulloso de ti y todo lo que has conseguido (media que
@@ -28,7 +28,9 @@ function updateCountdown() {
                     cuales tanto te has esforzado).</p>
                     
                     <p>Siempre seras mi bebe pequeña aunque cada dia crezcas mas y mas. Gracias por ser esa personita especial en mi vida.
-                    Gracias por siempre estar. Se que no fue un año del todo bueno para ambos como pareja. ESO ME DA MUCHA PENITAAAAAA
+                    Gracias por siempre estar.</p>
+                    
+                    <p>Se que no fue un año del todo bueno para ambos como pareja. ESO ME DA MUCHA PENITAAAAAA
                     pero quiero que sepas y confies en que ya todo podra ser como lo soñamos, juntitos hasta viejitos con una hermosa
                     familia que criaremos, EL MONTONAL DE CITAS ROMANTICAS QUE TENDREMOS EN EUROPA, y por supuesto ese maravilloso
                     matrimonio que viviremos tal y cual como lo hemos charlado mientras estas acostada hediondita en mi pecho.</p>
@@ -36,13 +38,13 @@ function updateCountdown() {
                     <p>Espero te haya gustado esta sorpresita media nerd Y QUE LA LEAS MIENTRAS COMES LAS FRUTILLAS CON CHOCOLATE QUE TE REGALEEEEE
                     TE AMOOOOOO MUUUUUUU🐮🐮🐮🐮🐮🐮CHOOOOOOOOOO</p>
                     
-                    <p style="text-align: center; font-weight: bold; color: #ff4d6d; font-size: 1.3rem; margin-top: 20px;">
-                        MI PRINCESA HERMOSA TE ULTRA AMOOOOO 
-                        (no juzgues mi codigo de front, recuerda que el front es el diseño de la pagina en simples palabras, intente que quedara ASTETIK pero     
+                    <p style="text-align: center; font-weight: bold; color: #ff4d6d; font-size: 1.5rem; margin-top: 20px;">
+                        MI PRINCESA HERMOSA TE ULTRA AMOOOOO (no juzgues mi codigo de front, recuerda que el front es el diseño de la pagina en simples palabras, intente que quedara ASTETIK pero     
                         el diseño a los teas no se nos da mucho.
-                        NO OLVIDES BAÑARTE!!!!)
                     </p>
-                    <div style="text-align: center; font-size: 40px; margin-top: 10px;">❤️</div>
+                    <p style="text-align: center; font-size: 0.9rem; color: #888; margin-top: 10px;">
+                        (No olvides bañarte hediondita ❤️)
+                    </p>
                 </div>
             `;
             startCelebration();
@@ -56,23 +58,23 @@ function updateCountdown() {
     }
 }
 
-// Lluvia de corazones (Solo desde abajo hacia arriba)
+// Lluvia de elementos al fondo
 function startCelebration() {
     const celebrationZone = document.getElementById("celebration-zone");
-    const elements = ["❤️", "💖", "🌸", "✨"];
+    const elements = ["❤️", "💖", "✨", "🌸", "🎀"];
 
     setInterval(() => {
         const element = document.createElement("div");
         element.classList.add("animated-element");
         element.innerHTML = elements[Math.floor(Math.random() * elements.length)];
         element.style.left = Math.random() * 100 + "vw";
-        element.style.bottom = "-50px"; // Siempre empiezan desde abajo
+        element.style.bottom = "-50px";
         celebrationZone.appendChild(element);
         element.addEventListener('animationend', () => element.remove());
-    }, 450);
+    }, 400);
 }
 
-// Efecto de Pétalos al Clic
+// Efecto de Pétalos al hacer Clic
 document.addEventListener('click', (e) => {
     const petals = ["🌸", "💮", "🌺", "💖"];
     for (let i = 0; i < 6; i++) {
@@ -85,8 +87,8 @@ document.addEventListener('click', (e) => {
 
         const angle = Math.random() * Math.PI * 2;
         const velocity = 2 + Math.random() * 4;
-        const xV = Math.cos(angle) * velocity * 20;
-        const yV = Math.sin(angle) * velocity * 20;
+        const xV = Math.cos(angle) * velocity * 25;
+        const yV = Math.sin(angle) * velocity * 25;
 
         petal.animate([
             { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 },
@@ -99,6 +101,3 @@ document.addEventListener('click', (e) => {
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
-
-
-
