@@ -1,31 +1,90 @@
+/* CONFIGURACIÓN GLOBAL Y CENTRADO */
 body {
     margin: 0;
+    padding: 0;
     background: #ffc0cb; 
     background-image: 
         radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 20%),
         radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.4) 0%, transparent 20%);
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width: 100vw;
     overflow: hidden;
     position: relative;
 }
 
-/* Corazones decorativos sutiles */
-.heart-bg {
-    position: absolute;
-    font-size: 25px;
-    opacity: 0.3;
-    z-index: 0;
+/* CONTENEDOR DE LA CARTA */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    z-index: 10;
 }
 
+.card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    width: 85%;
+    max-width: 420px;
+    max-height: 85vh;
+    overflow-y: auto;
+    text-align: center;
+    transition: all 0.5s ease;
+}
+
+/* ESTILO DEL TEXTO MANUSCRITO */
+.message-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.35rem;
+    color: #444;
+    line-height: 1.5;
+    text-align: left;
+    padding: 10px;
+    animation: fadeIn 1.5s ease-in;
+}
+
+.message-text h1 {
+    font-family: 'Dancing Script', cursive;
+    color: #d63384;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* FOTO Y CONTADOR */
+.birthday-photo {
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+#countdown {
+    color: #d63384;
+    font-weight: 600;
+    font-size: 1.1rem;
+    background: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* DECORACIÓN DE FONDO (NUBES) */
 .background-decor {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     z-index: 0;
+    pointer-events: none;
 }
 
 .cloud-item {
@@ -39,12 +98,8 @@ body {
 }
 
 .cloud-item::after, .cloud-item::before {
-    content: '';
-    position: absolute;
-    background: white;
-    border-radius: 50%;
+    content: ''; position: absolute; background: white; border-radius: 50%;
 }
-
 .cloud-item::after { width: 50px; height: 50px; top: -25px; left: 15px; }
 .cloud-item::before { width: 70px; height: 70px; top: -35px; right: 15px; }
 
@@ -53,58 +108,22 @@ body {
     to { left: 100vw; }
 }
 
-.card {
-    position: relative;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 35px;
-    border-radius: 40px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-    width: 85%;
-    max-width: 420px;
-    max-height: 80vh;
-    overflow-y: auto;
-    z-index: 10;
+.heart-bg { position: absolute; font-size: 25px; opacity: 0.3; }
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.card::-webkit-scrollbar { width: 5px; }
-.card::-webkit-scrollbar-thumb { background: #ffb1c1; border-radius: 10px; }
-
-.birthday-photo {
-    width: 100%;
-    max-width: 220px;
-    margin-bottom: 20px;
-    border-radius: 15px;
-}
-
-#countdown {
-    color: #d63384;
-    font-weight: bold;
-    font-size: 1.1rem;
-    background: white;
-    padding: 12px 20px;
-    border-radius: 50px;
-    display: inline-block;
-    box-shadow: 0 4px 15px rgba(214, 51, 132, 0.1);
-}
-
-.petal {
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    font-size: 20px;
-}
-
-.animated-element {
-    position: absolute;
-    font-size: 25px;
-    animation: floatUp 5s forwards linear;
-}
+.petal { position: fixed; pointer-events: none; z-index: 9999; font-size: 20px; }
+.animated-element { position: absolute; font-size: 25px; animation: floatUp 5s forwards linear; }
 
 @keyframes floatUp {
     0% { transform: translateY(110vh); opacity: 1; }
     100% { transform: translateY(-10vh); opacity: 0; }
 }
 
+/* SCROLLBAR */
+.card::-webkit-scrollbar { width: 5px; }
+.card::-webkit-scrollbar-thumb { background: #ffb1c1; border-radius: 10px; }
