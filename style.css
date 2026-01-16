@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #ffc0cb 0%, #ffdde1 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    cursor: crosshair; /* Cambia el cursor para indicar que puede hacer clic */
+}
+
+.card {
+    position: relative;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 30px;
+    border-radius: 40px;
+    backdrop-filter: blur(15px);
+    border: 3px solid rgba(255, 182, 193, 0.6);
+    box-shadow: 0 0 30px rgba(255, 77, 109, 0.2); /* Brillo rosa suave */
+    width: 85%;
+    max-width: 420px;
+    max-height: 85vh;
+    overflow-y: auto;
+    z-index: 10;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Scrollbar personalizada */
+.card::-webkit-scrollbar { width: 6px; }
+.card::-webkit-scrollbar-thumb { background: #ffb1c1; border-radius: 10px; }
+
+.birthday-photo {
+    width: 180px;
+    filter: drop-shadow(0 8px 15px rgba(0,0,0,0.1));
+    margin-bottom: 10px;
+}
+
+.heart_love {
+    position: absolute;
+    left: 50%; top: 15%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    animation: heart 1.2s infinite;
+}
+
+@keyframes heart {
+    0%, 100% { transform: translate(-50%, -50%) scale(0.8); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+#countdown {
+    color: #d63384;
+    font-weight: bold;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Animación de los pétalos */
+.petal {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 20px;
+    user-select: none;
+}
+
+.animated-element {
+    position: absolute;
+    font-size: 30px;
+    animation: floatUp 5s forwards linear;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+}
