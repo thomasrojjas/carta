@@ -1,6 +1,6 @@
 function updateCountdown() {
     // FECHA OBJETIVO
-    const targetDate = new Date("Jan 16, 2026 13:30:00").getTime();
+    const targetDate = new Date("Jan 18, 2026 13:30:00").getTime();
     const now = new Date().getTime();
     const diff = targetDate - now;
 
@@ -99,5 +99,6 @@ document.addEventListener('click', (e) => {
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
+
 
 
