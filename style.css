@@ -1,13 +1,75 @@
 body {
     margin: 0;
-    background: linear-gradient(135deg, #ffc0cb 0%, #ffdde1 100%);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Un rosa más vibrante pero suave para el fondo */
+    background: #ffc0cb; 
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.4) 0%, transparent 20%);
+    font-family: 'Segoe UI', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     overflow: hidden;
-    cursor: crosshair; /* Cambia el cursor para indicar que puede hacer clic */
+    position: relative;
+}
+
+.clouds {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+    /* Usamos una imagen de nubes con transparencia */
+    background: url('https://www.transparenttextures.com/patterns/clouds.png');
+    opacity: 0.6;
+}
+
+/* 3. Generar corazones decorativos fijos en el fondo */
+body::before, body::after {
+    content: "❤️";
+    position: absolute;
+    font-size: 40px;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+body::before { top: 10%; left: 10%; transform: rotate(-20deg); }
+body::after { bottom: 15%; right: 10%; transform: rotate(20deg); }
+
+/* 4. Contenedor de nubes animadas */
+.background-decor {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.cloud-item {
+    position: absolute;
+    background: white;
+    width: 120px;
+    height: 45px;
+    border-radius: 100px;
+    opacity: 0.8;
+    animation: moveClouds 20s linear infinite;
+}
+
+.cloud-item::after, .cloud-item::before {
+    content: '';
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+}
+
+.cloud-item::after { width: 50px; height: 50px; top: -25px; left: 15px; }
+.cloud-item::before { width: 70px; height: 70px; top: -35px; right: 15px; }
+
+@keyframes moveClouds {
+    from { left: -150px; }
+    to { left: 100vw; }
 }
 
 .card {
@@ -77,4 +139,5 @@ body {
 @keyframes floatUp {
     0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
     100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+
 }
