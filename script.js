@@ -1,5 +1,5 @@
 function updateCountdown() {
-    const targetDate = new Date("Jan 16, 2026 03:15:00").getTime();
+    const targetDate = new Date("Jan 16, 2026 03:30:00").getTime();
     const now = new Date().getTime();
     const diff = targetDate - now;
 
@@ -107,4 +107,5 @@ function startCelebration() {
 }
 
 setInterval(updateCountdown, 1000);
+
 updateCountdown();
