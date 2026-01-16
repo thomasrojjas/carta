@@ -1,5 +1,6 @@
 function updateCountdown() {
-    const targetDate = new Date("Jan 18, 2026 13:00:00").getTime();
+    // FECHA OBJETIVO
+    const targetDate = new Date("Jan 16, 2026 13:30:00").getTime();
     const now = new Date().getTime();
     const diff = targetDate - now;
 
@@ -12,7 +13,7 @@ function updateCountdown() {
             celebrationZone.dataset.started = 'true';
             document.title = "¡Feliz Cumpleaños! 🎂";
             
-            // CAMBIO DE IMAGEN Y MENSAJE
+            // Reemplazamos el contenido con la CARTA ABIERTA y tu mensaje
             card.innerHTML = `
                 <div style="text-align: center;">
                     <img src="cartaAbierta.png" alt="Carta Abierta" class="birthday-photo" style="width:160px;">
@@ -44,22 +45,31 @@ function updateCountdown() {
                     <div style="text-align: center; font-size: 40px; margin-top: 10px;">❤️</div>
                 </div>
             `;
-            
-            // Quitamos el corazón flotante inicial si existe
-            const heart = document.querySelector('.heart_love');
-            if(heart) heart.remove();
-
             startCelebration();
         }
     } else {
-        // ... (Cálculo del tiempo que ya tienes)
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
         countdownElement.innerHTML = `Nueva carta en: ${days}d ${hours}h ${mins}m ${secs}s`;
     }
+}
+
+// Lluvia de corazones (Solo desde abajo hacia arriba)
+function startCelebration() {
+    const celebrationZone = document.getElementById("celebration-zone");
+    const elements = ["❤️", "💖", "🌸", "✨"];
+
+    setInterval(() => {
+        const element = document.createElement("div");
+        element.classList.add("animated-element");
+        element.innerHTML = elements[Math.floor(Math.random() * elements.length)];
+        element.style.left = Math.random() * 100 + "vw";
+        element.style.bottom = "-50px"; // Siempre empiezan desde abajo
+        celebrationZone.appendChild(element);
+        element.addEventListener('animationend', () => element.remove());
+    }, 450);
 }
 
 // Efecto de Pétalos al Clic
@@ -81,32 +91,13 @@ document.addEventListener('click', (e) => {
         petal.animate([
             { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 },
             { transform: `translate(${xV}px, ${yV}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
-        ], {
-            duration: 1000 + Math.random() * 1000,
-            easing: 'ease-out',
-            fill: 'forwards'
-        });
+        ], { duration: 1500, easing: 'ease-out', fill: 'forwards' });
 
         setTimeout(() => petal.remove(), 2000);
     }
 });
 
-function startCelebration() {
-    const celebrationZone = document.getElementById("celebration-zone");
-    const elements = ["❤️", "✨", "🌸", "🎀", "💙"];
-
-    setInterval(() => {
-        const element = document.createElement("div");
-        element.classList.add("animated-element");
-        element.innerHTML = elements[Math.floor(Math.random() * elements.length)];
-        element.style.left = Math.random() * 100 + "vw";
-        element.style.bottom = "-50px";
-        celebrationZone.appendChild(element);
-        element.addEventListener('animationend', () => element.remove());
-    }, 400);
-}
-
 setInterval(updateCountdown, 1000);
-
 updateCountdown();
+
 
